@@ -1,0 +1,166 @@
+.profile{
+    display:flex;
+}
+
+.profileRight{
+    flex:9;
+}
+
+.profileCover{
+    height:320px;
+    position: relative;
+}
+
+.profileCoverImg{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.profileUserImg{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    object-fit:cover;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    top:67%;
+    -webkit-box-shadow: 0px 6px 5px rgb(226, 226, 248);
+    box-shadow: 0px 6px 5px rgb(226, 226, 248);
+}
+
+.profileRightBottom{
+    display:flex;
+    margin-top:190px;
+}
+
+.profileInfo{
+    position: absolute;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content:center;
+    left:45%;
+    top:70%;
+}
+
+.profileUserName{
+    font-size:24px;
+}
+
+.profileDesc{
+    font-size:16px;
+    color:grey;
+}
+
+.rightbar{
+    flex: 3.5;
+}
+
+.rightbarWrapper{
+    padding: 20px 20px 0 0;
+}
+
+.rightbarInfo{
+    margin-bottom:30px;
+}
+
+.rightbarInfoKey{
+    font-weight: bold;
+    margin-right:15px;
+    color: #555;
+}
+
+.rightbarInfoValue{
+    font-weight:300;
+    margin-right:15px;
+    color: #555;
+}
+
+.rightbarInfoItem{
+    margin-bottom:10px;
+}
+
+.rightbarTitle{
+    font-weight: bold;
+    font-size: 23px;
+    color:#555;
+}
+
+#changeCover,#changeProfile{
+    color:rgb(108, 105, 163);
+    border:none;
+    background-color:white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#changeCover:focus,#changeProfile:focus{
+    outline:none;
+}
+
+#d-menu1,#d-menu2{
+padding:5px !important;    
+}
+
+#changeProfile{
+    position: absolute;
+    top:145px;
+    left:50px;
+   
+}
+
+#d-menu2{
+    position: absolute;
+    top:177px;
+    left:50px !important;
+}
+
+#d-menu1{
+   
+    left:0px !important;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#update{
+    width:125px;
+}
+
+#follow{
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+#follow:focus{
+    outline:none;
+}
+
+.leftbarFriendList{
+    padding:0;
+    margin:0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#friend_img{
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.leftbarListItem{
+    display:flex;
+    flex-direction: column;
+    margin-bottom:20px;
+    align-items: center;
+   
+}
+
+#friends{    
+margin-top:70px;
+}

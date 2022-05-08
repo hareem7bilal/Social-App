@@ -1,0 +1,260 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+
+
+.bg-image {
+    background-image: url("/images/utopia.png");
+    animation-name: hue;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.bg-text {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    z-index: 8;
+}
+
+.bg-text h1 {
+    font-size: 80px;
+    color: white;
+}
+
+.bg-text p {
+    font-size: 18px;
+    color: white;
+}
+
+.btn-rounded {
+    border-radius: 50%;
+}
+
+#signup,
+#login {
+    width: 60%;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+#signup {
+    background-color: rgb(82, 8, 92);
+    border: none
+}
+
+#login {
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+#signup:focus {
+    outline: none;
+}
+
+#login:focus {
+    outline: none;
+}
+
+#login:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.cloud {
+    animation: clouds 10s infinite linear;
+    border-radius: 10px;
+    position: relative;
+    margin: 50px 0 0 0;
+    width: 54px;
+    height: 5px;
+    background: #f7e7eb;
+    z-index: 4;
+  }
+  .cloud.tiny {
+    transform: scale(0.5, 0.5);
+  }
+  .cloud.small {
+    transform: scale(1, 1);
+  }
+  .cloud.normal {
+    transform: scale(2, 2);
+  }
+  .cloud.large {
+    transform: scale(4, 4);
+  }
+  .cloud div {
+    box-shadow: inset -2px -3px 0 0 #f7e7eb;
+    position: absolute;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    left: -3px;
+    bottom: 0;
+    background: #fafbf0;
+    z-index: 10;
+  }
+  .cloud div:first-child + div {
+    transform: scale(1.6, 1.6);
+    margin: 0 0 4px 13px;
+    z-index: 9;
+  }
+  .cloud div:first-child + div + div {
+    transform: scale(2.4, 2.4);
+    margin: 0 0 9px 32px;
+    z-index: 8;
+  }
+  .cloud div:first-child + div + div + div {
+    transform: scale(1.3, 1.3);
+    margin: 0 0 2px 50px;
+    z-index: 7;
+  }
+  
+  
+  @keyframes clouds {
+    0% {
+      left: -90%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  .cloud-1 {
+    animation-duration: 120s;
+    margin-left: 20%;
+  }
+  
+  .cloud-2 {
+   
+    animation-duration: 70s;
+    margin-left: 90%;
+  }
+  
+  .cloud-3 {
+  
+    animation-duration: 80s;
+    margin-left: 50%;
+  }
+  
+  .cloud-4 {
+   
+    animation-duration: 90s;
+    margin-left: 43%;
+  }
+  
+  .cloud-5 {
+ 
+    animation-duration: 150s;
+    margin-left: 83%;
+  }
+  
+  .cloud-6 {
+  
+    animation-duration: 52s;
+    margin-left: 73%;
+  }
+  
+  .cloud-7 {
+    animation-duration: 77s;
+    margin-left: 69%;
+  }
+  
+  .cloud-8 {
+    animation-duration: 90s;
+    margin-left: 100%;
+  }
+  
+  .cloud-9 {
+    animation-duration: 69s;
+    margin-left: 10%;
+  }
+  
+  .cloud-10 {
+    animation-duration: 84s;
+    margin-left: 14%;
+  }
+  
+  .cloud-11 {
+    animation-duration: 66s;
+    margin-left: 73%;
+  }
+  
+  .cloud-12 {
+    animation-duration: 72s;
+    margin-left: 51%;
+  }
+
+  .cloud-13 {
+    animation-duration: 160s;
+    margin-left: 20%;
+  }
+  
+  .cloud-14 {
+    animation-duration: 179s;
+    margin-left: 40%;
+  }
+  
+  .cloud-15 {
+    animation-duration: 200s;
+    margin-left: 90%;
+  }
+
+  @keyframes hue {
+    0% {
+        -webkit-filter: hue-rotate(260deg);
+    }
+
+    12.5% {
+        -webkit-filter: hue-rotate(295deg);
+    }
+
+    25% {
+        -webkit-filter: hue-rotate(330deg);
+    }
+
+    37.5% {
+        -webkit-filter: hue-rotate(365deg);
+    }
+
+    50% {
+        -webkit-filter: hue-rotate(390deg);
+    }
+
+    62.5% {
+        -webkit-filter: hue-rotate(365deg);
+    }
+
+    75% {
+        -webkit-filter: hue-rotate(330deg);
+    }
+
+    87.5% {
+        -webkit-filter: hue-rotate(295deg);
+    }
+
+    100% {
+        -webkit-filter: hue-rotate(260deg);
+    }
+}
+

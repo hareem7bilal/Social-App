@@ -1,0 +1,63 @@
+#registerInput {
+    height: 40px;
+}
+
+#forgotpwd:focus{
+    outline:none;
+}
+
+#edit_profile{
+    background-image: url("/images/utopia.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-blend-mode: hue;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#label{
+    font-weight: bold;
+    margin-top:9px; 
+    font-size:15px;
+    color: white;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+
+}
+
+#container{
+    padding:30px 0;
+}
+
+
+
+#submit{
+    width:250px; 
+    background-color:purple;
+}
+
+#submit:focus{
+    outline:none;
+}
+
+#sub:focus{
+    outline:none;
+}
+
+#close:focus{
+    outline:none;
+}
+
+pre{
+    background-color: white;
+    border:none;
+    color: red;
+}
+
+#registerPwd {
+
+    height: 50px;
+
+    font-size: 18px;
+    padding-left: 20px;
+
+}
