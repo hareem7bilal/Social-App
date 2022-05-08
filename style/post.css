@@ -162,3 +162,11 @@
   min-width: 50em !important;
 
 }
+
+.noResultText{
+  position:absolute;
+  top: 15px;
+  font-size:26px;
+  color:rgb(224,220,220);
+  left:46.5%;
+}

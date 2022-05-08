@@ -6,9 +6,17 @@
 include("includes/connection.php");
 include("functions/timeago.php");
 
+$email = $_SESSION['email'];
+
 function profile_getPosts()
 {
-    global $con;
+    global $con, $email;
+
+    $get_current_user = "select * from users where email='$email'";
+    $run_user = mysqli_query($con, $get_current_user);
+    $row_user = mysqli_fetch_array($run_user);
+    $current_user_id = $row_user['user_id'];
+
 
     $get_posts = "select * from posts ORDER by 4 DESC";
     $run_get_posts = mysqli_query($con, $get_posts);
@@ -22,11 +30,14 @@ function profile_getPosts()
         $run_get_users = mysqli_query($con, $get_users);
         $row_user = mysqli_fetch_array($run_get_users);
         $username = $row_user['username'];
-        $profile_pic= $row_user['profile_pic'];
+        $profile_pic = $row_user['profile_pic'];
 
-    
-        if($content=="" && strlen($image)>=1){
-            echo "
+
+
+        if ($user_id == $current_user_id) {
+
+            if ($content == "" && strlen($image) >= 1) {
+                echo "
             <div class='post'>
     <div class='postWrapper'>
         <div class='postTop'>
@@ -35,7 +46,7 @@ function profile_getPosts()
                 <span class='postUserName'>$username</span>
                 <span class='postDate'>";
                 timeago(date($date));
-            echo "</span>
+                echo "</span>
             </div>
             <div class='postTopRight'>
             <div class='dropup'>
@@ -69,9 +80,8 @@ function profile_getPosts()
     </div>
 </div>
             ";
-        }
-        else if($content>=1 && strlen($image)>=1){
-            echo "
+            } else if ($content >= 1 && strlen($image) >= 1) {
+                echo "
             <div class='post'>
     <div class='postWrapper'>
         <div class='postTop'>
@@ -80,7 +90,7 @@ function profile_getPosts()
                 <span class='postUserName'>$username</span>
                 <span class='postDate'>";
                 timeago(date($date));
-            echo "</span>
+                echo "</span>
             </div>
             <div class='postTopRight'>
             <div class='dropup'>
@@ -115,9 +125,8 @@ function profile_getPosts()
     </div>
 </div>
             ";
-        }
-        else{
-            echo "
+            } else {
+                echo "
             <div class='post'>
     <div class='postWrapper'>
         <div class='postTop'>
@@ -126,7 +135,7 @@ function profile_getPosts()
                 <span class='postUserName'>$username</span>
                 <span class='postDate'>";
                 timeago(date($date));
-               echo "</span>
+                echo "</span>
             </div>
             <div class='postTopRight'>
             <div class='dropup'>
@@ -159,11 +168,10 @@ function profile_getPosts()
         </div>
     </div>
 </div>
-            "; 
+            ";
+            }
         }
-
     }
-
 }
 include("deletePost.php");
 ?>

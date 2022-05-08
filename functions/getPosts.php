@@ -1,6 +1,5 @@
 <style>
     <?php include("style/post.css"); ?>
-
 </style>
 
 <?php

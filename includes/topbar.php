@@ -34,10 +34,10 @@ $no_of_posts = mysqli_num_rows($run_posts);
     </div>
     <div class="topbarCenter">
         <form class="searchbar" method="get" action="results.php">
-            <button type="submit" name="search" style="color:purple;background-color:white;border:none;padding:1px;margin-left:10px">
+            <button type="submit" id= "nav_search" name="search" style="color:purple;background-color:white;border:none;padding:1px;margin-left:10px">
                 <i class="bi bi-search" style='font-size: 20px;'></i>
             </button>
-            <input placeholder="Search for friends, posts or videos" class="searchInput" />
+            <input placeholder="Search for posts" class="searchInput" name="user_query"/>
         </form>
     </div>
     <div class="topbarRight">
