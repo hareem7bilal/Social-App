@@ -1,0 +1,121 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginWrapper {
+  width: 70%;
+  height: 70%;
+  display: flex;
+}
+
+.loginLeft,
+.loginRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginLogo {
+  font-size: 50px;
+  font-weight: 800;
+  color: purple;
+  margin-bottom: 10px;
+}
+
+.loginDesc {
+  font-size: 20px;
+}
+
+.loginBox {
+  height: 330px;
+  padding: 20px;
+  background-color: white;
+  background-image: url("/images/utopia.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#loginInput {
+  border-radius: 10px;
+  height: 50px;
+  border: 1px solid grey;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+#loginInput:focus {
+  outline: none;
+}
+
+.forgotPwd {
+  text-align: center;
+  color: rgb(158, 37, 158);
+  text-decoration: none;
+  font-size: 14px;
+  float: right;
+  position: absolute;
+  top: 13.5px;
+  right: 10px;
+}
+
+.forgotPwd:hover {
+  color: rgb(185, 44, 185);
+  text-decoration: none;
+}
+
+.overlap-text {
+  position: relative;
+}
+
+.loginButton,
+.loginregisterButton {
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.loginButton {
+  background-color: rgb(138, 24, 138);
+}
+
+.loginButton:hover {
+  background-color: rgb(158, 37, 158);
+}
+
+.loginButton:disabled {
+  cursor: not-allowed;
+}
+
+.loginregisterButton {
+  background-color: #38ad21;
+  width: 60%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.loginregisterButton:hover {
+  background-color: #42b72a;
+  text-decoration: none;
+  color: white;
+}

@@ -201,14 +201,20 @@ if (!isset($_SESSION['email'])) {
                         </td>
                     </tr>
 
-                    <tr align="center">
-                        <td colspan="6">
-                            <input type="submit" class="btn btn-info" name="update_profileinfo" id="submit" value="Edit">
+                    <tr align="center" style="height:100px;">
+                        <td colspan="2">
+                            <a href="functions/delete_account.php" id="delete" class="btn btn-info">Delete Account&nbsp;&nbsp;<i class="bi bi-trash" style="font-size:16px"></i></a>
+                     
+                        </td>
+                        <td colspan="2">
+                            <button type="submit" class="btn btn-info" name="update_profileinfo" id="submit">Edit&nbsp;&nbsp;<i class="bi bi-pencil-square" style="font-size:16px"></i></button>
                         </td>
                     </tr>
 
                 </table>
             </form>
+
+
             <?php
             if (isset($_POST['submit'])) {
                 $bfn = htmlentities($_POST['content']);
@@ -300,6 +306,8 @@ if (!isset($_SESSION['email'])) {
                 x.type = "password";
             }
         }
+
+
     </script>
 </body>
 

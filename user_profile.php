@@ -73,22 +73,41 @@ if ($user_id == "" || $user_id < 0) {
                     <?php
                     $get_posts = "Select * from posts where user_id='$user_id' ORDER BY 4 DESC";
                     $run_get_posts = mysqli_query($con, $get_posts);
-                    while ($row_post = mysqli_fetch_array($run_get_posts)) {
-                        $post_id = $row_post['post_id'];
-                        $content = $row_post['content'];
-                        $image = $row_post['image'];
-                        $date = $row_post['date'];
+                    $check_followers = "select * from followers where user_id='$current_user_id'";
+                    $run_check = mysqli_query($con, $check_followers);
+                    $is_follower = true;
+                    if (mysqli_num_rows($run_check) == 0) {
+                        $is_follower = false;
+                    } else {
+                        while ($row = mysqli_fetch_array($run_check)) {
+                            $friend_id = $row['friend_id'];
+                            if ($user_id == $friend_id) {
+                                $is_follower = true;
+                                break;
+                            }
+                        }
+                    }
+                   
 
-                        $likes_query = "Select * from likes where post_id='$post_id'";
-                        $run_no = mysqli_query($con, $likes_query);
-                        $no_of_likes = mysqli_num_rows($run_no);
-        
-                        $dislikes_query = "Select * from dislikes where post_id='$post_id'";
-                        $run_no = mysqli_query($con, $dislikes_query);
-                        $no_of_dislikes = mysqli_num_rows($run_no);
+                        while ($row_post = mysqli_fetch_array($run_get_posts)) {
+                            $post_id = $row_post['post_id'];
+                            $content = $row_post['content'];
+                            $image = $row_post['image'];
+                            $date = $row_post['date'];
 
-                        if ($content == "" && strlen($image) >= 1) {
-                            echo "
+                            $likes_query = "Select * from likes where post_id='$post_id'";
+                            $run_no = mysqli_query($con, $likes_query);
+                            $no_of_likes = mysqli_num_rows($run_no);
+
+                            $dislikes_query = "Select * from dislikes where post_id='$post_id'";
+                            $run_no = mysqli_query($con, $dislikes_query);
+                            $no_of_dislikes = mysqli_num_rows($run_no);
+
+
+
+
+                            if ($content == "" && strlen($image) >= 1) {
+                                echo "
 <div class='post'>
 <div class='postWrapper'>
 <div class='postTop'>
@@ -96,8 +115,8 @@ if ($user_id == "" || $user_id < 0) {
 <a href='profile.php'><img src='$profile_pic' alt='profile pic' class='postProfileImg' /></a>
 <span class='postUserName'>$username</span>
 <span class='postDate'>";
-timeago(date($date));
-echo "</span>
+                                timeago(date($date));
+                                echo "</span>
 </div>
 <div class='postTopRight'>
 <div class='dropdown'>
@@ -127,8 +146,8 @@ View</button></a></li>
 </div>
 </div>
 ";
-                        } else if ($content >= 1 && strlen($image) >= 1) {
-                            echo "
+                            } else if ($content >= 1 && strlen($image) >= 1) {
+                                echo "
             <div class='post'>
     <div class='postWrapper'>
         <div class='postTop'>
@@ -136,8 +155,8 @@ View</button></a></li>
                 <a href='profile.php'><img src='$profile_pic' alt='profile pic' class='postProfileImg' /></a>
                 <span class='postUserName'>$username</span>
                 <span class='postDate'>";
-                timeago(date($date));
-                echo "</span>
+                                timeago(date($date));
+                                echo "</span>
             </div>
             <div class='postTopRight'>
             <div class='dropdown'>
@@ -167,8 +186,8 @@ View</button></a></li>
     </div>
 </div>
             ";
-                        } else {
-                            echo "
+                            } else {
+                                echo "
             <div class='post'>
     <div class='postWrapper'>
         <div class='postTop'>
@@ -176,8 +195,8 @@ View</button></a></li>
                 <a href='profile.php'><img src='$profile_pic' alt='profile pic' class='postProfileImg' /></a>
                 <span class='postUserName'>$username</span>
                 <span class='postDate'>";
-                timeago(date($date));
-                echo "</span>
+                                timeago(date($date));
+                                echo "</span>
             </div>
             <div class='postTopRight'>
             <div class='dropdown'>
@@ -206,41 +225,33 @@ View</button></a></li>
     </div>
 </div>
             ";
-                        }
-                    }
-                    include("functions/deletePost.php");
-
-                    ?>
-                </div>
-                <div class="rightbar">
-                    <div class="rightbarWrapper">
-
-                        <?php
-                        $check_followers = "select * from followers where user_id='$current_user_id'";
-                        $run_check = mysqli_query($con, $check_followers);
-                        $is_follower = true;
-                        if (mysqli_num_rows($run_check) == 0) {
-                            $is_follower = false;
-                        } else {
-                            while ($row = mysqli_fetch_array($run_check)) {
-                                $friend_id = $row['friend_id'];
-                                if ($user_id == $friend_id) {
-                                    $is_follower = true;
-                                    break;
-                                }
                             }
                         }
+                   
 
 
-                        echo '<button type="button" class="btn btn-success" style=';
-                        echo   $is_follower ? '"background-color:darkred"' : '"background-color:green"';
-                        echo 'id="follow">';
 
-                        echo  $is_follower ? 'Unfollow<i class="bi bi-dash"></i>' : 'Follow<i class="bi bi-plus"></i>';
 
-                        echo '</button><br /><br /><br />';
 
-                        echo '
+
+
+                    echo '</div>
+                <div class="rightbar">
+                    <div class="rightbarWrapper">';
+
+
+
+
+
+                    echo '<button type="button" class="btn btn-success" style=';
+                    echo   $is_follower ? '"background-color:darkred"' : '"background-color:green"';
+                    echo 'id="follow">';
+
+                    echo  $is_follower ? 'Unfollow<i class="bi bi-dash"></i>' : 'Follow<i class="bi bi-plus"></i>';
+
+                    echo '</button><br /><br /><br />';
+
+                    echo '
                         <h4 class="rightbarTitle">About</h4>
                         <hr>
                         <div class="rightbarInfo">
@@ -269,21 +280,21 @@ View</button></a></li>
                             <div class="leftbarFriendList">';
 
 
-                        $get_friends = "select * from followers where user_id='$user_id'";
-                        $run_friends = mysqli_query($con, $get_friends);
+                    $get_friends = "select * from followers where user_id='$user_id'";
+                    $run_friends = mysqli_query($con, $get_friends);
 
 
-                        while ($row = mysqli_fetch_array($run_friends)) {
-                            $friend_id = $row['friend_id'];
-                            $get_friend = "select * from users where user_id='$friend_id'";
-                            $run_friend = mysqli_query($con, $get_friend);
-                            $row_friend = mysqli_fetch_array($run_friend);
-                            $first_name = $row_friend['first_name'];
-                            $last_name = $row_friend['last_name'];
-                            $profile_pic = $row_friend['profile_pic'];
+                    while ($row = mysqli_fetch_array($run_friends)) {
+                        $friend_id = $row['friend_id'];
+                        $get_friend = "select * from users where user_id='$friend_id'";
+                        $run_friend = mysqli_query($con, $get_friend);
+                        $row_friend = mysqli_fetch_array($run_friend);
+                        $first_name = $row_friend['first_name'];
+                        $last_name = $row_friend['last_name'];
+                        $profile_pic = $row_friend['profile_pic'];
 
 
-                            echo "
+                        echo "
                 <div class='leftbarListItem'>
                 <a href='user_profile.php?user_id= $friend_id'>
                 <img src='$profile_pic' id='friend_img' width='80px' height='80px'/>
@@ -291,22 +302,22 @@ View</button></a></li>
                 <h4>$first_name $last_name</h4>
                 </div>
                 ";
-                        }
-                        echo '
+                    }
+                    echo '
                             </div>
                         </div>' ?>
-                    </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
     </div>
 
 
 
     <script>
         let $user_id = <?php echo $user_id ?>;
-      
+
         let $current_user_id = <?php echo $current_user_id ?>;
 
 
@@ -317,10 +328,12 @@ View</button></a></li>
                 $('.rightbarTitle').hide();
                 $('.rightbarInfo').hide();
                 $('hr').hide();
+                $('.post').hide();
             } else {
                 $('.rightbarTitle').show();
                 $('.rightbarInfo').show();
                 $('hr').show();
+                $('.post').show();
             }
 
             $("#follow").click(function() {
@@ -329,6 +342,7 @@ View</button></a></li>
                     $('.rightbarTitle').show();
                     $('.rightbarInfo').show();
                     $('hr').show();
+                    $('.post').show();
                     $(this).css("background-color", "darkred");
 
 
@@ -342,13 +356,14 @@ View</button></a></li>
                         type: 'success',
                         title: 'Success!',
                         message: 'User has been followed.'
-                      });
+                    });
 
                 } else {
                     $(this).html('Follow<i class="bi bi-plus"></i>');
                     $('.rightbarTitle').hide();
                     $('.rightbarInfo').hide();
                     $('hr').hide();
+                    $('.post').hide();
                     $(this).css("background-color", "green");
 
                     function unfollow() {
@@ -361,8 +376,8 @@ View</button></a></li>
                         type: 'error',
                         title: 'Success!',
                         message: 'User has been unfollowed.'
-                      });
-                   
+                    });
+
                 }
             });
 
