@@ -1,6 +1,7 @@
 .messenger{
     height: calc(100vh - 70px);
     display:flex;
+    position:sticky;
   }
   
   .chatMenu {
@@ -113,7 +114,7 @@
 }
 
 #textArea .emojionearea-editor {
-    min-height: 6em !important;
+    min-height: 4em !important;
   
 }
 

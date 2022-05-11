@@ -34,10 +34,12 @@ $current_profile_pic = $row_user['profile_pic'];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/messages.css">
     <link rel="stylesheet" href="style/profile.css">
+    <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/emojionearea.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="style/emojionearea.min.js"></script>
+    <script src="style/cute-alert.js"></script>
 </head>
 
 <body>
@@ -57,6 +59,7 @@ $current_profile_pic = $row_user['profile_pic'];
                     $get_user = "select * from users where (first_name like '%$search_query%' or last_name like '%$search_query%'
     or username like '%$search_query%') and user_id!='$current_user_id'";
                     $run_user = mysqli_query($con, $get_user);
+
                     while ($row_user = mysqli_fetch_array($run_user)) {
                         $user_id = $row_user['user_id'];
                         $first_name = $row_user['first_name'];
@@ -113,52 +116,9 @@ $current_profile_pic = $row_user['profile_pic'];
                     if (isset($_GET['user_id'])) {
                         $user_id = $_GET['user_id'];
                         if ($user_id != "new") {
-                           
-                            $get_msgs = "select * from messages where (reciever_id='$user_id' and sender_id='$current_user_id')
-                             or (reciever_id='$current_user_id' and sender_id='$user_id') order by 1 ASC";
-                            $run_msgs = mysqli_query($con, $get_msgs);
-                            while ($row_msg = mysqli_fetch_array($run_msgs)) {
-                                $sender_id = $row_msg['sender_id'];
-                                $reciever_id = $row_msg['reciever_id'];
-                                $date = $row_msg['date'];
-                                $text = $row_msg['text'];
 
 
-                                if (($reciever_id == $user_id) && ($sender_id == $current_user_id)) {
-                                    echo "
-                                    <div class='message own'>
-                                    <div class='messageTop'>
-                                        <img src='$current_profile_pic' class='messageImg' />
-                                        <p class='messageText'>$text</p>
-                                    </div>
-                                    <div class='messageBottom'>";
-                                    timeago(date($date));
-                                    echo "</div>
-                                </div>  
-                                    ";
-
-                                } 
-                                else if (($reciever_id ==$current_user_id) && ($sender_id == $user_id)) {
-                                    $get_profile_pic = "Select profile_pic from users where user_id='$sender_id'";
-                                    $run_pic = mysqli_query($con,$get_profile_pic);
-                                    $row_pic = mysqli_fetch_array($run_pic);
-                                    $profile_pic = $row_pic['profile_pic'];
-
-                                    echo "
-                                    <div class='message'>
-                                    <div class='messageTop'>
-                                        <img src='$profile_pic' class='messageImg' />
-                                        <p class='messageText'>$text</p>
-                                    </div>
-                                    <div class='messageBottom'>";
-                                    timeago(date($date));
-                                    echo "</div>
-                                </div>  
-                                    ";
-                                }
-
-                            }
-                           
+                            echo "<div id='fetched_msgs'></div>";
                         }
                     }
                     ?>
@@ -188,28 +148,59 @@ $current_profile_pic = $row_user['profile_pic'];
                             echo "
                         <form action='' method='post'>
                         <div id='textArea'>
-                        <textarea style='display:none;' placeholder='Type something...' class='chatMsgInput' id='msgBox' name='msgBox'></textarea>
+                        <textarea style='display:none;' placeholder='Type something...' class='chatMsgInput' id='msgBox'></textarea>
                         </div>
                         <div style='display:flex;align-items: center;'>
-                     <button type='submit' class='chatSendButton' name='sendMsg'>
+                     <button type='submit' class='chatSendButton' id='sendMsg' name='sendMsg'>
                          Send
                      </button>
-                    ";
+                    </div></form>";
 
-                            if (isset($_POST['sendMsg'])) {
+                            echo "
+                    <script>
+                    var sender_id=$current_user_id;
+                    var reciever_id=$user_id;
+                    var current_user_id=$current_user_id;
+                    var user_id=$user_id;
 
-                                $msg = htmlentities($_POST['msgBox']);
-                                if ($msg == "") {
-                                    echo "<h4>message not sent!</h4>";
-                                } else if (strlen($msg) > 255) {
-                                    echo "<h4>message is too long to be sent! Use less than 256 characters.</h4>";
-                                } else {
-                                    $insert_msg = "insert into messages(sender_id,reciever_id,text,date,seen)
-                    values('$current_user_id','$user_id','$msg',NOW(),'false')";
-                                    $run_insert = mysqli_query($con, $insert_msg);
-                                }
-                            }
-                            echo "</div></form>";
+    $(document).ready(function() {
+        
+        $('#msgBox').emojioneArea({
+            pickerPosition: 'bottom'
+        });
+
+        const btn = document.getElementById('sendMsg');
+
+        $(document).on('click','.chatSendButton',function() {
+            event.preventDefault();
+            var msg=$('.chatMsgInput').val();
+            if(msg == ''){
+                alert('Empty message!');
+            }
+            else{
+                $.ajax({
+                    url:'functions/sendMsg.php',
+                    method:'POST',
+                    data:{sender_id:sender_id,reciever_id:reciever_id,msg:msg},
+                    complete: function() {
+                        $('#msgBox').val('');
+                    },
+                    success: function() {
+                   
+                    }
+                });
+
+            }
+           
+               
+        });
+
+});
+
+</script>
+";
+
+
                         }
                     }
                     ?>
@@ -268,14 +259,44 @@ $current_profile_pic = $row_user['profile_pic'];
                     </div>
                     </div>
                     </div> ";
-                    }
-                    else{
+                    } else {
                         echo "";
                     }
                 }
                 ?>
             </div>
         </div>
+
+
+        <script>
+            function ajaxCall() {
+                $.ajax({
+                    url: 'functions/fetchMsg.php',
+                    method: 'POST',
+                    data: {
+                        current_user_id: current_user_id,
+                        user_id: user_id
+                    },
+                    dataType: 'html',
+                    success: function(res) {
+                        $('#fetched_msgs').html(res);
+                        var objDiv = document.getElementById('chatTop');
+                        objDiv.scrollTop = objDiv.scrollHeight;
+
+                    },
+                    complete: function(data) {
+                        setTimeout(ajaxCall, 50);
+                    }
+
+                });
+
+            }
+
+
+            $(document).ready(function() {
+                setTimeout(ajaxCall, 50);
+            });
+        </script>
 
 
 
@@ -290,15 +311,3 @@ $current_profile_pic = $row_user['profile_pic'];
 </body>
 
 </html>
-
-<script>
-    $(document).ready(function() {
-        $('#msgBox').emojioneArea({
-            pickerPosition: "bottom"
-        });
-
-    });
-    var div=document.getElementById("chatTop");
-    div.scrollTop=div.scrollHeight;
-
-</script>
