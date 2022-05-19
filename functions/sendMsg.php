@@ -10,11 +10,4 @@ $insert_msg = "insert into messages(sender_id,reciever_id,text,date,seen)
         values('$sender_id','$reciever_id','$msg',NOW(),'false')";
 $run_insert = mysqli_query($con, $insert_msg);
 
-
-
-
-
-
-
-
 ?>
