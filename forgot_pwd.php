@@ -75,8 +75,9 @@
                         <input name="recovery_account" placeholder="..." type="text" class="form-control" id="registerInput" required />
                     </div>
 
-                    <button class="registerloginButton" name="recovery_submit">Verify</button>
-                    <button class="registerButton" name="signup">Sign Up</button>
+                    <button class="registerloginButton" name="recovery_submit" type="submit">Verify</button>
+                    <a class="registerButton" name="signup" href="register.php">Sign Up</a>
+             
 
                 
                 </form>

@@ -23,7 +23,7 @@
         </li>
       </a>
 
-      <a href='about_us.php'>
+      <a href='FAQ.php'>
         <li class="leftbarListItem">
           <i class="bi bi-question-octagon" style="font-size:23px"></i>&nbsp;&nbsp;&nbsp;
           <span class="leftbarListItemText">FAQ</span>
