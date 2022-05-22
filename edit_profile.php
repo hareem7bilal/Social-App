@@ -131,18 +131,6 @@ if (!isset($_SESSION['email'])) {
 
                     <tr>
                         <td>
-                            <div id="label">Email</div>
-                        </td>
-                        <td colspan=3>
-                            <div class="input-group" id="inputContainer">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input id="registerInput" class="form-control" type="email" name="email" required value="<?php echo $email ?>">
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
                             <div id="label">Country</div>
                         </td>
                         <td>
@@ -260,14 +248,13 @@ if (!isset($_SESSION['email'])) {
                 $first_name = htmlentities($_POST['f_name']);
                 $last_name = htmlentities($_POST['l_name']);
                 $password = htmlentities($_POST['password']);
-                $email = htmlentities($_POST['email']);
                 $country = htmlentities($_POST['country']);
                 $gender = htmlentities($_POST['gender']);
                 $birthday = htmlentities($_POST['birthday']);
                 $relationship_status = htmlentities($_POST['relationship_status']);
                 $description = htmlentities($_POST['description']);
                 $username = htmlentities($_POST['username']);
-                $update = "Update users set first_name='$first_name',last_name='$last_name',password='$password',email='$email',
+                $update = "Update users set first_name='$first_name',last_name='$last_name',password='$password',
                 country='$country',gender='$gender',birthday='$birthday',relationship_status='$relationship_status',description='$description',
                 username='$username' where user_id='$user_id'";
                 $run_update = mysqli_query($con, $update);

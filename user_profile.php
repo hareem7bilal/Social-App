@@ -146,7 +146,7 @@ View</button></a></li>
 </div>
 </div>
 ";
-                            } else if ($content >= 1 && strlen($image) >= 1) {
+                            } else if (strlen($content) >= 1 && strlen($image) >= 1) {
                                 echo "
             <div class='post'>
     <div class='postWrapper'>

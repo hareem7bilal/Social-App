@@ -1,0 +1,54 @@
+body{background-image:url(/images/utopia.png);}
+main{padding-left:20%; }
+.faq-heading{padding:2%;padding-left:20%;
+    border-bottom: #777;color:black;
+}
+.faq-container{justify-content: center;
+    width:70%;
+    border-radius:2%;;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+.hr-line{
+  width: 60%;
+  margin: auto;
+}
+.faq-page {
+    color: black;
+    padding: 30px 20px;
+    width: 70%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+    font-size:large;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.faq-page:hover {
+    background-color: #F9F9F9;
+}
+
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {text-align: center;
+    padding: 0 18px;
+    background-color: aliceblue;
+    display: none;
+    overflow: hidden;
+}
+
+.faq-page:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}

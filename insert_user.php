@@ -54,15 +54,8 @@ if (isset($_POST['signup'])) {
     '$profile_pic','$cover_pic',NOW(),'$status','$posts','imaginaryfriend')";
         $run_insert_user_query = mysqli_query($con, $insert_user_query);
         if ($run_insert_user_query) {
-            echo "<script>
-        cuteAlert({
-            type: 'success',
-            title: '$first_name $last_name,',
-            message: 'Welcome to Utopia!',
-            buttonText: 'Okay',
-            img:'style/img/success.svg'
-          })
-          </script>";
+            echo "<script>alert('Registration successful!')</script>";
+            echo "<script>window.open('login.php','_self')</script>";
         } else {
             echo "<script>
         cuteAlert({
