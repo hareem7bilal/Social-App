@@ -67,7 +67,7 @@ if (!isset($_SESSION['email'])) {
                                 <div class='dropdown-menu' id='d-menu2'>
                                     <center>
                                         <label class='btn btn-primary'>
-                                            <i class='bi bi-cloud-arrow-up'></i>&nbsp;Select Profile
+                                            <i class='bi bi-cloud-arrow-up'></i>&nbsp;Select Profile Picture
                                             <input name='profile_pic' type='file' />
                                         </label>
                             <li class='divider'></li>
