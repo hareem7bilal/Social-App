@@ -128,7 +128,10 @@ input[type="file"] {
 }
 
 #update{
-    width:125px;
+    width:145px;
+}
+#select{
+    width:145px;
 }
 
 #follow{

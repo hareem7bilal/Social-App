@@ -43,13 +43,13 @@ if (!isset($_SESSION['email'])) {
                                     <i class='bi bi bi-camera-fill' style='font-size: 30px'></i></button>
                                 <div class='dropdown-menu' id='d-menu1'>
                                     <center>
-                                        <label class='btn btn-primary'>
-                                            <i class='bi bi-cloud-arrow-up'></i>&nbsp;Select Cover
+                                        <label class='btn btn-primary' id='select'>
+                                            <i class='bi bi-cloud-arrow-up'></i>&nbsp;Select Cover Pic
                                             <input name='cover_pic' type='file' />
                                         </label>
                             <li class='divider'></li>
                             <button name='submit1' id="update" class='btn btn-success'><i class='bi bi-arrow-repeat'></i>
-                                Update Cover</button>
+                                Update Cover Pic</button>
                             </center>
                 </div>
                 </li>
@@ -66,13 +66,13 @@ if (!isset($_SESSION['email'])) {
                                     <i class='bi bi bi-camera-fill' style='font-size: 20px'></i></button>
                                 <div class='dropdown-menu' id='d-menu2'>
                                     <center>
-                                        <label class='btn btn-primary'>
-                                            <i class='bi bi-cloud-arrow-up'></i>&nbsp;Select Profile Picture
+                                        <label class='btn btn-primary' id='select'>
+                                            <i class='bi bi-cloud-arrow-up'></i>&nbsp;Select Profile Pic
                                             <input name='profile_pic' type='file' />
                                         </label>
                             <li class='divider'></li>
                             <button name='submit2' id="update" class='btn btn-success'><i class='bi bi-arrow-repeat'></i>
-                                Update Profile</button>
+                                Update Profile Pic</button>
                             </center>
                 </div>
                 </li>
