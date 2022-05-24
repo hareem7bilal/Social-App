@@ -20,7 +20,7 @@ function get_birthdays()
     $is_birthday=0;
 
     echo "<span class='birthdayText'>";
-    if (mysqli_num_rows($run_friends) > 0) {
+    if (mysqli_num_rows($run_friends)>0) {
 
         while ($row_friend = mysqli_fetch_array($run_friends)) {
 

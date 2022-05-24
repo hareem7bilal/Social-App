@@ -295,8 +295,9 @@ View</button></a></li>
 
 
                         echo "
-                <div class='leftbarListItem'>
-                <a href='user_profile.php?user_id= $friend_id'>
+                <div class='leftbarListItem'>";
+                echo $friend_id==$current_user_id?"<a href='profile.php'>":"<a href='user_profile.php?user_id= $friend_id'>";
+                echo"
                 <img src='$profile_pic' id='friend_img' width='80px' height='80px'/>
                 </a>
                 <h4>$first_name $last_name</h4>
