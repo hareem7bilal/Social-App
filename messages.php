@@ -292,6 +292,8 @@ $current_profile_pic = $row_user['profile_pic'];
 
             }
 
+            
+
 
             $(document).ready(function() {
                 setTimeout(ajaxCall, 50);
